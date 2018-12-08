@@ -29,6 +29,7 @@ class MyAnimateState extends State<MyAnimate> {
   ];
   final Random random = new Random();
   Color _color;
+  List<Color> _gradientColor = [Colors.red, Colors.blue];
 
   void changeColor() {
     setState(() {
@@ -39,6 +40,12 @@ class MyAnimateState extends State<MyAnimate> {
     });
   }
 
+  // void changeGradientColor() {
+  //   setState(() {
+  //     _gradientColor = [colors[random.nextInt(5)], colors[random.nextInt(5)]];
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +54,26 @@ class MyAnimateState extends State<MyAnimate> {
       ),
       body: Center(
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 800),
-          color: _color,
+          duration: Duration(milliseconds: 3000),
           height: 300,
           width: 300,
           curve: Curves.fastOutSlowIn,
+          decoration: BoxDecoration(
+            color: _color,
+            // gradient: LinearGradient(colors: _gradientColor),
+            border: Border.all(
+              color: Colors.blueGrey,
+              width: 5,
+              style: BorderStyle.solid,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                offset: Offset(5, 5),
+              )
+            ],
+            borderRadius: BorderRadius.circular(50),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
