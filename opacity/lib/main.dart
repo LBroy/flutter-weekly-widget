@@ -9,6 +9,30 @@ class MyApp extends StatelessWidget {
       title: "Opacity Demo",
       theme: ThemeData(primarySwatch: Colors.purple),
       home: Home(),
+      routes: <String, WidgetBuilder>{
+        "/page1": (BuildContext context) => Home(),
+        "/page2": (BuildContext context) => AnotherPage(),
+      },
+    );
+  }
+}
+
+class AnotherPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Another Page"),
+      ),
+      body: Center(
+        child: ColorBox(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.face),
+        onPressed: () {
+          Navigator.of(context).pop(true);
+        },
+      ),
     );
   }
 }
@@ -21,6 +45,12 @@ class Home extends StatelessWidget {
         title: Text("Opacity Demo"),
       ),
       body: OpacityWidget(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.face),
+        onPressed: () {
+          Navigator.of(context).pushNamed("/page2");
+        },
+      ),
     );
   }
 }
