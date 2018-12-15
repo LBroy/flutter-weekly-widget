@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ltr_animation/brick_animate.dart';
 
 void main() => runApp(MaterialApp(
       title: "left to right animation",
-      home: HomePage(),
+      home: BrickPage(),
     ));
 
 class HomePage extends StatefulWidget {
